@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            font-family: sans-serif;
+
+        }
+
+        .header {
+            background-color: #272727;
+            color: #ffffff;
+            display: flex;
+            margin: auto;
+            width: 100%;
+            padding: 15px;
+            line-height: 22.4px;
+            font-size: 14px;
+            border: 9px 2px 5px;
+            /* flex-wrap: wrap; */
+        }
+
+        .header a {
+            color: #ffffff;
+            /* display:flex; */
+
+        }
+
+        .address {
+            width: 451px;
+            font-size: 16px;
+            text-align: left;
+            /* margin-left: 100px; */
+            margin:auto;
+        }
+
+        .phone {
+            width: 495px;
+            font-size: 16px;
+            text-align: left;
+            margin:auto;
+        }
+
+        .icon {
+            width: 460px;
+            text-align: right;
+            margin:auto;
+        }
+
+        .icon a {
+            margin: 7px
+        }
+
+        .carousel {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .carousel img {
+            filter: grayscale(.6);
+        }
+
+        .Nav {
+            display: flex;
+            width: 100%;
+            margin: auto;
+        }
+
+        .logo {
+            width: 360px;
+            margin: auto;
+        }
+
+        .logo img {
+            padding: 20px;
+            margin: auto;
+        }
+
+        .select {
+            display: flex;
+            justify-content: flex-end;
+            margin: auto;
+            padding: 25px;
+            width: 886px;
+        }
+
+        .select a {
+
+            color: #fff;
+            text-decoration: none;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 27px;
+        }
+
+        .search {
+            width: 138px;
+            margin: auto;
+        }
+
+        .search a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 27px;
+            margin: 20px;
+        }
+
+        .main-describe {
+            position: relative;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            align-items: flex-end;
+            left: 0;
+            right: 0;
+            top: -350px;
+
+        }
+
+        .main-describe h1 {
+            font-size: 110px;
+        }
+
+        .main-describe button {
+            margin: 22px 38px;
+            width: 284px;
+            height: 59px;
+            background-color: #2ac5f4;
+            color: #fff;
+            font-size: 14px;
+        }
+
+  
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="address"><i class="fa fa-map-marker"></i>Address: 4578 Marmora Road, Glasgow, D04 89GR</div>
+        <div class="phone"><a href="#"><i class="fa fa-phone"></i>Phones: (800) 123-0045; (800) 123-0046</a></div>
+        <div class="icon">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-vimeo"></i></a>
+            <a href="#"><i class="fa fa-youtube-play"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Manufax/asset 1.png" alt="Los Angeles" width="100%">
+                <div class="main-describe">
+                    <div class="main-title">
+                        <h1>CONSTRUCTION</h1>
+                    </div>
+                    <div class="main-subtitle">
+                        <h2>SEE HOW A 10-STORIES TOWER'S BEING BUILT, IN A TIME-LAPSE!</h2>
+                    </div>
+                    <div class="main-bottom">
+                        <button>SEE OUR RECENT PROJECTS</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="Manufax/asset 2.png" alt="Chicago" width="100%">
+                <div class="main-describe">
+                    <div class="main-title">
+                        <h1>CONSTRUCTION</h1>
+                    </div>
+                    <div class="main-subtitle">
+                        <h2>SEE HOW A 10-STORIES TOWER'S BEING BUILT, IN A TIME-LAPSE!</h2>
+                    </div>
+                    <div class="main-bottom">
+                        <button>SEE OUR RECENT PROJECTS</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="Manufax/asset 3.png" alt="New York" width="100%">
+                <div class="main-describe">
+                    <div class="main-title">
+                        <h1>CONSTRUCTION</h1>
+                    </div>
+                    <div class="main-subtitle">
+                        <h2>SEE HOW A 10-STORIES TOWER'S BEING BUILT, IN A TIME-LAPSE!</h2>
+                    </div>
+                    <div class="main-bottom">
+                        <button>SEE OUR RECENT PROJECTS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <div class="Nav">
+        <div class="logo">
+            <img src="/Manufax/asset 0.png" alt="">
+        </div>
+        <div class="select">
+            <nav class="select-item">
+                <a href="#">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">SERVICES</a>
+                <a href="#">PROJECTS</a>
+                <a href="#">BLOG</a>
+                <a href="#">CONTACTS</a>
+            </nav>
+        </div>
+        <div class="search">
+            <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <!-- <div class="service">
+        <div class=""></div>
+
+    </div> -->
+    <div class="service">
+        <div class="severices_container">
+            <h2>OUR SEVERICES</h2>
+        </div>
+        <div class="service-describe">
+            <div class="services">
+                <div class="house">
+                    <div class="house-img">
+                        <i class="fa fa-home"></i>
+                    </div>
+                    <div class="house-txt">
+                        <h2>BUILDING INFORMATION MODELING</h2>
+                        <p>Oftentimes physical and functional essence of any construction project needs to be
+                            represented digitally, in a 3D model format. In...</p>
+                    </div>
+                </div>
+                <div class="codepen">
+                    <div class="codepen-img">
+                        <i class="fa fa-codepen"></i>
+                    </div>
+                    <div class="codepen-txt">
+                        <h2>CONSTRUCTION SERVICES</h2>
+                        <p>Our customers love the pace/quality tempo that we show during each of the principal
+                            construction processes! We're comfortable with any...</p>
+
+                    </div>
+                </div>
+                <div class="th">
+                    <div class="th-img">
+                        <i class="fa fa-th"></i>
+                    </div>
+                    <div class="th-txt">
+                        <h2>PRE-CONSTRUCTION SERVICES</h2>
+                        <p>We take our time on initial planning before any construction begins, to balance all the
+                            financial and efficiency issues beforehand.This...</p>
+                    </div>
+                </div>
+                <div class="edit">
+                    <div class="edit-img">
+                        <i class="fa fa-edit"></i>
+                    </div>
+                    <div class="edit-txt">
+                        <div>
+                            <h2>DESIGN-BUILD</h2>
+                            <p>If a project is not too complex, we may hire a designer-builder type of contractor,
+                                to make the longevity of...</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="building">
+                    <div class="building-img">
+                        <i class="fa fa-building"></i>
+                    </div>
+                    <div class="building-txt">
+                        <h2>CONSTRUCTION MANAGEMENT</h2>
+                        <p>Construction project management is essential. We're using the most time and iterations
+                            efficient life cycles for that.As you may know,...</p>
+                    </div>
+                </div>
+
+
+                <div class="address-book">
+                    <div class="address-book-img">
+                        <i class="fa fa-address-book"></i>
+                    </div>
+                    <div class="address-book-txt">
+                        <h2>GENERAL CONTRACTING</h2>
+                        <p>We have a long list of professional contractors, whom our engineers and architects enjoy
+                            to
+                            work with on a majority...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
