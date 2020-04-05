@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <script src="https://kit.fontawesome.com/3989616774.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: black;
+  }
+
+  .menu-container {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+
+  .change .bar2 {
+    opacity: 0;
+  }
+
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+  /* .menu-icon {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 3px 0;
+  } */
+  .search {
+    display: flex;
+  }
+
+  .main-content a {
+    color: #b9b9b9;
+    margin: 10px;
+  }
+
+  .breadcrumb {
+    background-color: #ffffff;
+  }
+
+  .breadcrumb-item a {
+    margin: 10px;
+    text-decoration: none;
+
+  }
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: '/';
+    margin: 0 10px;
+  }
+
+  .main-page img {
+    width: 100%;
+  }
+
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <div class="menu-container" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <label>Currency</label>
+      <a class="dropdown-item" href="#">My Account</a>
+      <a class="dropdown-item" href="#">Wishlist</a>
+      <a class="dropdown-item" href="#">Checkout</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <form class="form-inline my-2 my-lg-0 ml-auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <a href="/cart"><i class="fa fa-shopping-cart" title="Cart"></i></a>
+      </form> -->
+      <form class="form-inline my-2 my-lg-0 ml-auto">
+        <div style="margin:0 50px"><a href="/cart"><i class="fa fa-shopping-cart" title="Cart"></i></a>
+        </div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search store" aria-label="Search">
+        <div type="button"><i class="fas fa-search"></i></div>
+      </form>
+    </div>
+  </nav>
+  <div class="main-nav">
+    <div class="row no-gutters">
+      <div class="col-xl-3"></div>
+      <div class="col-12 d-flex justify-content-center aline-items-center py-3 col-xl-6 ">
+        <img src="Style-Factory/logo.jpg" alt="">
+      </div>
+      <div
+        class="col-12 d-flex justify-content-center aline-items-center col-xl-3 align-items-xl-end justify-content-xl-end pr-xl-5">
+        <nav class="main-content">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+          <a href="#"><i class="fab fa-google-plus-g"></i></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb justify-content-center aline-items-center">
+      <li class="breadcrumb-item"><a href="#">HOME</a></li>
+      <li class="breadcrumb-item"><a href="#">PRODUCTS</a></li>
+      <li class="breadcrumb-item"><a href="#">BLOG</a></li>
+      <li class="breadcrumb-item"><a href="#">SALE</a></li>
+      <li class="breadcrumb-item"><a href="#">ABOUT US</a></li>
+      <li class="breadcrumb-item"><a href="#">CONTACT US</a></li>
+    </ol>
+  </nav>
+  <div class="main-page">
+    <div class="row no-gutters">
+      <div class="col-12">
+        <img src="Style-Factory/greeting_image.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="touch row">
+      <div class="col-12 col-md-4">
+        <a href="#">
+          <h3>NEW ARRIVALS</h3>
+          <p>SEE OUR LATEST MUST-HAVES>></p>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a href="#">
+          <h3>WE LOVE</h3>
+          <p>CHECK OUT STYLISH FAVORITES>></p>
+        </a></div>
+      <div class="col-12 col-md-4">
+        <a href="#">
+          <h3>FREE SHIPPING</h3>
+          <p>ON ALL 2016 COLLECTION>></p>
+        </a></div>
+
+    </div>
+  </div>
+  <div class="hair-page">
+    <div class="row no-gutters">
+      <div class="col-12">
+        <img src="Style-Factory/promo_block_img.jpg" class="w-100 d-block" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="browse">
+      <div class="row no-gutters">
+        <div class="col-12 col-md-6 col-xl-3">
+          <img src="style-Factory/category1.jpg" alt="" class="w-100 d-block">
+          <h3>MEN'S HAIR CARE</h3>
+          <button>7 products</button>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+          <img src="style-Factory/category2.jpg" alt="" class="w-100 d-block">
+          <h3>MEN'S HAIR STYLING</h3>
+          <button>13 products</button>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+          <img src="style-Factory/category3.jpg" alt="" class="w-100 d-block">
+          <h3>MEN'S HAIR HEALTH TREATMENT</h3>
+          <button>9 products</button>
+        </div>        
+        <div class="col-12 col-md-6 col-xl-3">
+          <img src="style-Factory/category4.jpg" alt="" class="w-100 d-block">
+          <h3>MEN'S HAIR CARE FOR KIDS</h3>
+          <button>7 products</button>
+        </div>         
+      </div>
+  </div>
+  <div class="product">
+    <div class="row no-gutters">
+      <div class="col-12 col-md-6 col-xl-3">
+        <img src="style-Factory/product_1.jpg" alt="" class="w-100 d-block">
+        <h3>MEN'S HAIR CARE</h3>
+        <button>7 products</button>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <img src="style-Factory/product_3.jpg" alt="" class="w-100 d-block">
+        <h3>MEN'S HAIR STYLING</h3>
+        <button>13 products</button>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <img src="style-Factory/product_5.jpg" alt="" class="w-100 d-block">
+        <h3>MEN'S HAIR HEALTH TREATMENT</h3>
+        <button>9 products</button>
+      </div>        
+      <div class="col-12 col-md-6 col-xl-3">
+        <img src="style-Factory/product_1.jpg" alt="" class="w-100 d-block">
+        <h3>MEN'S HAIR CARE FOR KIDS</h3>
+        <button>7 products</button>
+      </div>         
+    </div>
+</div>
+
+<div class="blog">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-4">
+      <h3>14 JANUARY</h3>
+      <p>Posted by David Braun 2 Comments</p>
+      <img src="style-Factory/blog1.jpg" alt="" class="w-100 d-block">
+      <h3>You bring beauty to the world</h3>
+      <P>Coco Chanel said that a woman who cuts her hair is about...</P>
+      <button>Read more</button>
+    </div>
+    <div class="col-12 col-md-4">
+      <h3>14 JANUARY</h3>
+      <p>Posted by David Braun 2 Comments</p>
+      <img src="style-Factory/blog2.jpg" alt="" class="w-100 d-block">
+      <h3>Of best hair products here</h3>
+      <P>Whoever you are, a professional hair stylist or a person who professionally...</P>
+      <button>Read more</button>
+    </div>        
+    <div class="col-12 col-md-4">
+      <h3>14 JANUARY</h3>
+      <p>Posted by David Braun 2 Comments</p>
+      <img src="style-Factory/blog3.jpg" alt="" class="w-100 d-block">
+      <h3>Or to be more precise...have...</h3>
+      <P>For saving your time, please use filters: brand, concerns, formulation, ingredient preferences,...</P>
+      <button>Read more</button>
+    </div>         
+  </div>
+</div>
+<div class="featured">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-6 col-xl-3">
+      <img src="style-Factory/FEATURED1.jpg" alt="" class="w-100 d-block">
+      <h3>Infiniti Pro by Conair Hair Designer 3 in 1 Sty...</h3>
+      <button>Add to cart</button>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <img src="style-Factory/FEATURED3.jpg" alt="" class="w-100 d-block">
+      <h3>InStyler Ionic Styler Pro Ceramic Flat Iron</h3>
+      <button>Unavailabel</button>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <img src="style-Factory/FEATURED5.jpg" alt="" class="w-100 d-block">
+      <h3>Jose Eber Wet & Dry Flat Iron Straightener</h3>
+      <button>Add to cart</button>
+    </div>        
+    <div class="col-12 col-md-6 col-xl-3">
+      <img src="style-Factory/FEATURED7.jpg" alt="" class="w-100 d-block">
+      <h3>Glide Thru Detangler Hair Comb or Brush</h3>
+      <button>Add to cart</button>
+    </div>         
+  </div>
+</div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script>
+    function myFunction(x) {
+      x.classList.toggle("change");
+    }
+  </script>
+
+</body>
+
+</html>
