@@ -17,9 +17,6 @@
             padding: 0;
             list-style: none;
         }
-        body {
-            width: 100%;
-        }
         .main {
             min-width: 200px;
             background-color: #ddd;
@@ -106,7 +103,6 @@
     </div>
 
     <script>
-        // var input=document.getElementById('inputTxt');
         function getnumber(number) {
             inputTxt.value += number.innerText;
         };
@@ -118,8 +114,8 @@
             inputTxt.value = inputTxt.value.substr(0, inputTxt.value.length - 1);
         };
         function equals() {
-            var ans = eval(document.getElementById('inputTxt').value) //抓值
-            document.getElementById('Ans').value = ans
+            var answer = eval(document.getElementById('inputTxt').value)
+            document.getElementById('Ans').value = answer
         }
 
 
