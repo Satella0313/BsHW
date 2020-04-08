@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        *,
+        .row {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            width: 100%;
+        }
+        .main {
+            min-width: 200px;
+            background-color: #ddd;
+            box-shadow: 0 0 20px 0px rgba(0, 0, -0.6, 0.5);
+            border-radius: 3px;
+        }
+
+        #inputTxt {
+            border-bottom: 0px;
+        }
+
+        #Ans {
+            border-top: 0px;
+        }
+
+        button {
+            height: 40px;
+            background-color: #dddddd;
+            border: solid 1px;
+            text-decoration: none;
+
+        }
+
+        .btna {
+            padding: 0px;
+        }
+
+        .inputTxt.Ans {
+            background-color: #777777;
+        }
+
+        .btn_num {
+            background-color: #333;
+        }
+
+        .wrap {
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 wrap">
+                <div class="main">
+                    <input type="text" class="w-100" style="text-align: right; font-size: 30px;" id="inputTxt">
+                    <input type="text" class="w-100" style="text-align: right; font-size: 30px;" id="Ans">
+
+                    <div class="row">
+                        <button class="col-3 btna" onclick="AC()">AC</button>
+                        <button class="col-3 btna" onclick="DEL()">DEL</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">%</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">/</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btna" onclick="getnumber(this)">7</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">8</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">9</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">*</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btna" onclick="getnumber(this)">4</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">5</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">6</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">-</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btna" onclick="getnumber(this)">1</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">2</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">3</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">+</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btna" onclick="getnumber(this)">0</button>
+                        <button class="col-3 btna" onclick="getnumber(this)">.</button>
+                        <button class="col-6 btna" onclick="equals()">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // var input=document.getElementById('inputTxt');
+        function getnumber(number) {
+            inputTxt.value += number.innerText;
+        };
+        function AC() {
+            inputTxt.value = '';
+            Ans.value = '';
+        };
+        function DEL() {
+            inputTxt.value = inputTxt.value.substr(0, inputTxt.value.length - 1);
+        };
+        function equals() {
+            var ans = eval(document.getElementById('inputTxt').value) //抓值
+            document.getElementById('Ans').value = ans
+        }
+
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
