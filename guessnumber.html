@@ -110,7 +110,7 @@
                 alert('請輸入數字!');
             }
             else if (!(guess.value < min || guess.value > max)) {
-                if (guess.value < rand && guess.value > -1) {
+                if (guess.value < rand) {
                     min = guess.value;
                     label.innerHTML = `${min}~${max}`;
                 }
