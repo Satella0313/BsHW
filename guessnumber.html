@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>GuessNumber</title>
+    <style>
+        *,
+        .row {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        label {
+            font-size: 60px;
+        }
+
+        .wrap {
+            margin: auto;
+        }
+
+        #guess {
+            margin: auto;
+            /* border: 2px black; */
+        }
+
+        button {
+            height: 40px;
+            background-color: black;
+            color:white;
+            box-shadow: 0 0 20px 0px rgba(0, 0, -0.6, 0.5);
+
+        }
+        button:hover{
+            background-color: white;
+            color:gray;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-6 wrap">
+                <div class="main">
+                    <div class="row">
+                        <button class="col-12" id="start" onclick="random()">產生新數字</button>
+                    </div>
+                    <div class="row justify-content-center">
+                        <label></label>
+                    </div>
+                    <div class="row justify-content-center mb-2">
+                        <input type="text" style="text-align: center;font-size:30px" id="guess" name="guess" value="0">
+                    </div>
+                    <div class="row mt-2">
+                        <button class="col-4" onclick="getnum(this)">1</button>
+                        <button class="col-4" onclick="getnum(this)">2</button>
+                        <button class="col-4" onclick="getnum(this)">3</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-4" onclick="getnum(this)">4</button>
+                        <button class="col-4" onclick="getnum(this)">5</button>
+                        <button class="col-4" onclick="getnum(this)">6</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-4" onclick="getnum(this)">7</button>
+                        <button class="col-4" onclick="getnum(this)">8</button>
+                        <button class="col-4" onclick="getnum(this)">9</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-4" onclick="clearinput()">X</button>
+                        <button class="col-4" onclick="getnum(this)">0</button>
+                        <button class="col-4" onclick="isok()">V</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var rand, min, max;
+        var start = document.getElementById('start');
+        function getnum(num) {
+            guess.value += num.innerText;
+        };
+        function random() {
+            label = document.querySelector('label');
+            rand = Math.floor(Math.random() * 101);
+            min = 0;
+            max = 100;
+            label.innerHTML = `${min}~${max}`;
+            alert('已產生數字,盡量猜吧~')
+        };
+        function clearinput() {
+            guess.value = '';
+        }
+
+        function isok() {
+            if (rand == null) {
+                alert('請先產生數字');
+            }
+            else if (guess.value == '') {
+                alert('請輸入數字!');
+            }
+            else if (!(guess.value < min || guess.value > max)) {
+                if (guess.value < rand && guess.value > -1) {
+                    min = guess.value;
+                    label.innerHTML = `${min}~${max}`;
+                }
+                else if (guess.value > rand && guess.value < 100) {
+                    max = guess.value;
+                    label.innerHTML = `${min}~${max}`;
+                }
+                else if (guess.value > 100 || guess.value < 0) {
+                    alert('範圍是0-100!');
+                }
+                else if (guess.value == rand) {
+                    alert('恭喜猜對,若要進行下一場案重新開始');
+                    start.innerText = '重新開始';
+                }
+            }
+            else if (guess.value > 100 || guess.value < 0) {
+                alert('範圍是0-100!');
+            }
+            else {
+                alert('已輸入過,請重新輸入')
+            }
+            guess.value = '';
+        }
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
