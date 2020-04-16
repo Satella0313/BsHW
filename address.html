@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Zip Code</title>
+    <style>
+        #btLoadData {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid gray;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        table,
+        td,
+        tr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>郵遞區號列表</h1>
+    <div id="btLoadData">讀取資料</div>
+    <template>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <script>
+        var ADDRESS_DATA=[];
+        var URL = 'https://raw.githubusercontent.com/2opex/Portfolio/master/JS/TaiwanAddress/TaiwanAddress.json';
+        GetJsonFile(URL);
+
+        function GetJsonFile(filePath) {
+            let rawFile = new XMLHttpRequest();
+            rawFile.open("GET", filePath);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status === 0) {
+                        ConvertData(JSON.parse(rawFile.responseText));
+                        SetClickEvent();
+                    };
+                };
+            };
+            rawFile.send(null);
+        };
+
+        function SetClickEvent() {
+            document.getElementById('btLoadData').addEventListener('click', function () {
+                AppenTable(document.body);
+            });
+        };
+
+        function AppenTable(body) {
+            let fragment = document.createDocumentFragment();
+            let tableElement = document.createElement('table');
+
+            AppendTrTd(tableElement);
+
+            fragment.appendChild(tableElement);
+            body.appendChild(fragment);
+        };
+
+        function AppendTrTd(tableElement) {
+            let tableTemplate = document.getElementsByTagName('template')[0].cloneNode(true);
+            let trTemplate = tableTemplate.content.querySelector('tr');
+
+            ADDRESS_DATA.forEach(city => {
+                city.Districts.forEach(district => {
+                    let newTr = trTemplate.cloneNode(true);
+                    let tdArray = newTr.querySelectorAll('td');
+
+                    tdArray[0].textContent = city.City;
+                    tdArray[1].textContent = district.AreaList;
+                    tdArray[2].textContent = district.ZipCode;
+
+                    tableElement.appendChild(newTr);
+                });
+            });
+
+        };
+
+        function ConvertData(originData) {
+            originData.forEach(city => {       
+                let newCity = {
+                    City: city.CityName,
+                    Districts: []
+                };
+                
+                city.AreaList.forEach(area => {                   
+                    newCity.Districts.push({ AreaList: area.AreaName, ZipCode: area.ZipCode });
+                });  
+                     
+                ADDRESS_DATA.push(newCity);
+            });
+        };
+        
+    </script>
+</body>
+
+</html>
