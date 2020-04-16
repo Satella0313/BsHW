@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>ipadsort</title>
+    <style>
+        table {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="sort" onclick="Sort(this)">sku<i class="fas fa-sort"></i></th>
+                    <th class="sort" onclick="Sort(this)">Price<i class="fas fa-sort"></i></th>
+                    <th class="sort" onclick="Sort(this)">storage<i class="fas fa-sort"></i></th>
+                    <th>description</th>
+                    <th>picture</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var iPad = [
+            {
+                "sku": "MW762",
+                "price": 10900,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 金色",
+                "picture": "ipad_gold.png"
+            },
+            {
+                "sku": "MW792",
+                "price": 13900,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 金色",
+                "picture": "ipad_gold.png"
+            },
+            {
+                "sku": "MW742",
+                "price": 10900,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 太空灰色",
+                "picture": "ipad_space.png"
+            },
+            {
+                "sku": "MW772",
+                "price": 13900,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 太空灰色",
+                "picture": "ipad_space.png"
+            },
+            {
+                "sku": "MW752",
+                "price": 10900,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 32GB - 銀色",
+                "picture": "ipad_silver.png"
+            },
+            {
+                "sku": "MW782",
+                "price": 13900,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi 機型 128GB - 銀色",
+                "picture": "ipad_silver.png"
+            },
+            {
+                "sku": "MW6D2",
+                "price": 15400,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 金色",
+                "picture": "ipad_gold.png"
+            },
+            {
+                "sku": "MW6G2",
+                "price": 18400,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 金色",
+                "picture": "ipad_gold.png"
+            },
+            {
+                "sku": "MW6A2",
+                "price": 15400,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 太空灰色",
+                "picture": "ipad_space.png"
+            },
+            {
+                "sku": "MW6E2",
+                "price": 18400,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 太空灰色",
+                "picture": "ipad_space.png"
+            },
+            {
+                "sku": "MW6C2",
+                "price": 15400,
+                "storage": "32GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 32GB - 銀色",
+                "picture": "ipad_silver.png"
+            },
+            {
+                "sku": "MW6F2",
+                "price": 18400,
+                "storage": "128GB",
+                "description": "10.2 吋 iPad Wi-Fi + 行動網路機型 128GB - 銀色",
+                "picture": "ipad_silver.png"
+            }
+        ]
+
+        var tBody = document.getElementsByTagName('tbody')[0];
+
+        for (let item of iPad) {
+            let tr = document.createElement('tr');
+            for (let i in item) {
+                let td = document.createElement('td');
+                td.innerText = item[i];
+                tr.appendChild(td);
+            }
+            tBody.appendChild(tr);
+        }
+
+        var Getdesc = false;
+
+        function Sort(i) {
+            let result = iPad.sort(function (a, b) {
+                if (!Getdesc) {
+                    if (typeof (a[i.innerText]) == 'string') {
+                        if (a[i.innerText] >= b[i.innerText]) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                    return a[i.innerText] - b[i.innerText];
+                } else {
+                    if (typeof (i.innerText) == 'string') {
+                        if (a[i.innerText] <= b[i.innerText]) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    }
+                    return b[i.innerText] - a[i.innerText];
+                }
+            });
+
+            iPad = result;
+            tBody.innerHTML = '';
+            for (let item of result) {
+                let tr = document.createElement('tr');
+                for (let prop in item) {
+                    let td = document.createElement('td');
+                    td.innerText = item[prop];
+                    tr.appendChild(td);
+                }
+                tBody.appendChild(tr);
+            }
+            if (Getdesc) {
+                Getdesc = false;
+            } else {
+                Getdesc = true;
+            }
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
