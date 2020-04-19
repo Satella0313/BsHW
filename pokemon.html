@@ -42,6 +42,7 @@
             }
 
             function allpokemon() {
+                $("#container").empty();
                 for (index = 1; index < 809; index++) {
                     filename = index.toString().padStart(3, '0');
                     $("#container").append(`<img src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png' />`);
