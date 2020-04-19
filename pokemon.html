@@ -25,6 +25,7 @@
             function clearall() {
                 index = 1;
                 $("#container").empty();
+                $("#addone").attr("disabled",false);
             }
 
             function addpokemon() {
@@ -46,6 +47,7 @@
                     filename = index.toString().padStart(3, '0');
                     $("#container").append(`<img src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png' />`);
                 }
+                $("#addone").attr("disabled",true);
             }
         </script>
 </body>
