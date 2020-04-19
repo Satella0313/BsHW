@@ -14,8 +14,7 @@
     <button id="removeone">Click-1</button>
     <button id="loadall">Load ALL</button>
     <button id="clear">Clear</button>
-    <div id="container">
-
+    <div id="container"></div>
         <script>
             var index = 1;
             var filename = '001'
@@ -43,11 +42,12 @@
 
             function allpokemon() {
                 $("#container").empty();
-                for (index = 1; index < 809; index++) {
+                for (index = 1; index < 891; index++) {
                     filename = index.toString().padStart(3, '0');
                     $("#container").append(`<img src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png' />`);
                 }
             }
         </script>
 </body>
+
 </html>
