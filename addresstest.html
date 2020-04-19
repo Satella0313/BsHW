@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityDropdownSelectOptons</title>
+</head>
+<body>
+    <select name="cities" id="cities" onchange="disSelect(this.selectedIndex)">
+        <option value="">--- 請選擇縣市 ---</option>
+    </select>
+    <select name="district" id="district" onchange="pShow(this.selectedIndex)">
+        <option value="">--- 請選擇行政區 ---</option>
+    </select>
+    <!-- <button onclick="submitData()">Submit 提交資料</button> -->
+    <script>
+        var ZipCode = [];
+        var data = [];
+        var cities = document.getElementById('cities');
+        var district = document.getElementById('district');
+        var body = document.querySelector('body');
+        var p = document.createElement('p');
+        function fetchMaskJSON(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    ZipCode = JSON.parse(data);
+                    ZipCode.forEach((item, index) => {
+                        var option = document.createElement('option');
+                        option.textContent = item.City;
+                        cities.appendChild(option);
+                    });
+                })
+                .catch(ex => {
+                    document.querySelector('body').innerHTML = ex;
+                })
+        }
+        function disSelect(index) {
+            p.innerHTML = '';
+            district.innerHTML = '--- 請選擇行政區 ---';
+            p.innerHTML = ZipCode[index - 1].City;
+            body.appendChild(p);
+            ZipCode[index - 1].Districts.forEach((item, num) => {
+                data[num] = item.District;
+                var option1 = document.createElement('option');
+                option1.textContent = item.District;
+                district.appendChild(option1);
+            })
+            console.log(data);
+        }
+        function pShow(text) {
+            p.innerHTML += data[text];
+            body.appendChild(p);
+        }
+        window.onload = fetchMaskJSON('https://raw.githubusercontent.com/z990272/Test/master/TaiwanAddressSample.json')
+    </script>
+</body>
+</html>
+    
+    
+  
+  
+

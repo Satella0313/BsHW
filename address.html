@@ -1,108 +1,83 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taiwan Zip Code</title>
-    <style>
-        #btLoadData {
-            display: inline-block;
-            padding: 10px;
-            border: 1px solid gray;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        table,
-        td,
-        tr {
-            border: 1px solid black;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>台灣郵遞區號</title>
+    <script src="/Modules/MyHelper.js"></script>
 </head>
 
 <body>
-    <h1>郵遞區號列表</h1>
-    <div id="btLoadData">讀取資料</div>
-    <template>
+    <h1>台灣郵遞區號</h1>
+    <div id="msg"></div>
+    <table class="table table-striped">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+    <template id="templatetitle">
+        <tr>
+            <th>縣市</th>
+            <th>區域</th>
+            <th>郵遞區號</th>
+        </tr>
+    </template>
+    <template id="templateRow">
         <tr>
             <td></td>
             <td></td>
             <td></td>
         </tr>
     </template>
-
     <script>
-        var ADDRESS_DATA=[];
-        var URL = 'https://raw.githubusercontent.com/2opex/Portfolio/master/JS/TaiwanAddress/TaiwanAddress.json';
-        GetJsonFile(URL);
+        let msg = $g('msg');
+        let thead = $g('thead');
+        let tbody = $g('tbody');
+        let Address = '';
+        let NewAddress = [];
+        function fetchMaskJSON(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    Address = JSON.parse(data);
+                    Address.forEach((el) => {
+                        let temp = {
+                            City: el.CityName,
+                            Districts: []
+                        };
+                        el.AreaList.forEach((element) => {
+                            temp.Districts.push({ District: element.AreaName, ZipCode: element.ZipCode })
+                        })
+                        NewAddress.push(temp);
+                    });
+                    AddThead();
+                    AddTbody(NewAddress);
+                })
+                .catch(ex => {
+                    document.querySelector('body').innerHTML = ex;
+                })
+        } window.onload = fetchMaskJSON('https://raw.githubusercontent.com/Satella0313/FileStorage/master/TaiwanAddress.json')
 
-        function GetJsonFile(filePath) {
-            let rawFile = new XMLHttpRequest();
-            rawFile.open("GET", filePath);
-            rawFile.onreadystatechange = function () {
-                if (rawFile.readyState === 4) {
-                    if (rawFile.status === 200 || rawFile.status === 0) {
-                        ConvertData(JSON.parse(rawFile.responseText));
-                        SetClickEvent();
-                    };
-                };
-            };
-            rawFile.send(null);
-        };
-
-        function SetClickEvent() {
-            document.getElementById('btLoadData').addEventListener('click', function () {
-                AppenTable(document.body);
-            });
-        };
-
-        function AppenTable(body) {
-            let fragment = document.createDocumentFragment();
-            let tableElement = document.createElement('table');
-
-            AppendTrTd(tableElement);
-
-            fragment.appendChild(tableElement);
-            body.appendChild(fragment);
-        };
-
-        function AppendTrTd(tableElement) {
-            let tableTemplate = document.getElementsByTagName('template')[0].cloneNode(true);
-            let trTemplate = tableTemplate.content.querySelector('tr');
-
-            ADDRESS_DATA.forEach(city => {
-                city.Districts.forEach(district => {
-                    let newTr = trTemplate.cloneNode(true);
-                    let tdArray = newTr.querySelectorAll('td');
-
-                    tdArray[0].textContent = city.City;
-                    tdArray[1].textContent = district.AreaList;
-                    tdArray[2].textContent = district.ZipCode;
-
-                    tableElement.appendChild(newTr);
-                });
-            });
-
-        };
-
-        function ConvertData(originData) {
-            originData.forEach(city => {       
-                let newCity = {
-                    City: city.CityName,
-                    Districts: []
-                };
-                
-                city.AreaList.forEach(area => {                   
-                    newCity.Districts.push({ AreaList: area.AreaName, ZipCode: area.ZipCode });
-                });  
-                     
-                ADDRESS_DATA.push(newCity);
-            });
-        };
-        
+        function AddThead() {
+            let templateTitle = $g('#templatetitle');
+            let cloneContent = templateTitle.content.cloneNode(true);
+            thead.appendChild(cloneContent);
+        }
+        function AddTbody(input) {
+            let templateRow = $g('#templateRow');
+            for (let i = 0; i < input.length; i++) {
+                for (let j = 0; j < input[i]["Districts"].length; j++) {
+                    let cloneContent = templateRow.content.cloneNode(true);
+                    let tds = cloneContent.querySelectorAll('td');
+                    tds[0].textContent = input[i]["City"];
+                    tds[1].textContent = input[i]["Districts"][j].District;
+                    tds[2].textContent = input[i]["Districts"][j].ZipCode;
+                    tbody.appendChild(cloneContent);
+                }
+            }
+        }
     </script>
 </body>
 
