@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Pokemon</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+    <button id="addone">Click+1</button>
+    <button id="removeone">Click-1</button>
+    <button id="loadall">Load ALL</button>
+    <button id="clear">Clear</button>
+    <div id="container">
+
+        <script>
+            var index = 1;
+            var filename = '001'
+            $("#addone").on("click", addpokemon);
+            $("#removeone").on("click", removepokemon);
+            $("#loadall").on("click", allpokemon);
+            $("#clear").on("click", clearall);
+            function clearall() {
+                index = 1;
+                $("#container").empty();
+            }
+
+            function addpokemon() {
+                filename = index.toString().padStart(3, '0');
+                $("#container").append(`<img src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png'/>`);
+                index++;
+            }
+
+            function removepokemon() {
+                if (index > 1) {
+                    index--;
+                }
+                $("img").last().remove();
+            }
+
+            function allpokemon() {
+                for (index = 1; index < 809; index++) {
+                    filename = index.toString().padStart(3, '0');
+                    $("#container").append(`<img src='https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${filename}.png' />`);
+                }
+            }
+
+        </script>
+</body>
+
+</html>
